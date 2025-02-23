@@ -1,0 +1,817 @@
+/* Styles généraux */
+body, html {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  height: 100%;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #84fab0, #8fd3f4, #a1c4fd);
+  background-size: 200% 200%;
+  animation: gradientShift 15s infinite ease-in-out;
+  z-index: -1;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: rise 10s infinite ease-in-out, sideWays 5s infinite ease-in-out;
+}
+
+.bubble:nth-child(1) { left: 10%; width: 60px; height: 60px; }
+.bubble:nth-child(2) { left: 25%; width: 80px; height: 80px; }
+.bubble:nth-child(3) { left: 40%; width: 40px; height: 40px; }
+.bubble:nth-child(4) { left: 70%; width: 90px; height: 90px; }
+.bubble:nth-child(5) { left: 90%; width: 50px; height: 50px; }
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 0.8; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px; /* Ajoute de l'espace entre les éléments */
+}
+
+/* Carnet spiralé */
+.notebook {
+  position: relative;
+  padding: 10px;
+
+  width: 300px;
+  height: 600px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px auto;
+  border-radius: 10px;
+
+}
+
+
+
+.pages {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fdfdfd;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background: repeating-linear-gradient(
+      white,
+      white 29px,
+      #ddd 30px
+  );
+  border-top: 2px dashed #ddd;
+}
+
+.note-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.note-content {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.delete-btn {
+  margin-top: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.spiral {
+  position: absolute;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  background: #444;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.spiral:nth-child(1) { left: 20px; }
+.spiral:nth-child(2) { left: 60px; }
+.spiral:nth-child(3) { left: 100px; }
+.spiral:nth-child(4) { left: 140px; }
+.spiral:nth-child(5) { left: 180px; }
+.spiral:nth-child(6) { left: 220px; }
+.spiral:nth-child(7) { left: 260px; }
+
+/* Animation des bulles */
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: rise 10s infinite ease-in-out;
+}
+
+@keyframes rise {
+  0% {
+      transform: translateY(100%);
+  }
+  100% {
+      transform: translateY(-200%);
+  }
+}
+
+/* Styles du carnet */
+.notebook {
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.spiral {
+  width: 10px;
+  height: 10px;
+  background: #444;
+  border-radius: 50%;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 50px;
+}
+
+.note-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-btn, .delete-btn {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+.edit-btn {
+  background: #007bff;
+  color: white;
+}
+.delete-btn {
+  background: red;
+  color: white;
+}
+
+/* Sélecteur de couleur */
+input[type="color"] {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+
+/* Amélioration des boutons */
+.new-note-btn, .edit-btn, .delete-btn {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+}
+
+.new-note-btn {
+  background-color: green;
+  color: white;
+}
+/* Ajout d'un défilement automatique pour les notes longues */
+.scrollable-text {
+    max-height: 170px; /* Définit la hauteur max de l'affichage */
+    overflow-y: auto; /* Active le défilement vertical */
+    word-wrap: break-word; /* Coupe les mots trop longs */
+    padding-right: 5px; /* Ajoute un peu d'espace pour le scroll */
+}
+
+/* Style de la barre de défilement */
+.scrollable-text::-webkit-scrollbar {
+    width: 5px; /* Largeur de la barre */
+}
+
+.scrollable-text::-webkit-scrollbar-thumb {
+    background: rgba(32, 116, 33, 0.2); /* Couleur de la barre */
+    border-radius: 5px;
+}
+
+.scrollable-text::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05); /* Fond de la barre */
+}
+
+
+.capture-btn {
+  background-color: #ff9800;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.capture-btn:hover {
+  background-color: #e68900;
+}
+
+
+/* Rend les titres et le texte modifiables plus visibles */
+.note-title, .note-content {
+  cursor: text; /* Indique que le texte est modifiable */
+  outline: none; /* Supprime la bordure bleue par défaut */
+  transition: background-color 0.2s ease;
+}
+
+/* Effet visuel lors de l'édition */
+.note-title:focus, .note-content:focus {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+}
+
+/* Style des boutons */
+.capture-btn {
+  background-color: #ff9800;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.capture-btn:hover {
+  background-color: #e68900;
+}
+
+/* Style du Sélecteur de Catégorie */
+.category-dropdown, .filter-dropdown {
+  width: 50%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Amélioration des styles */
+.new-note-btn, .delete-btn, .capture-btn {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.new-note-btn {
+  background-color: green;
+  color: white;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+}
+
+.capture-btn {
+  background-color: #ff9800;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+.capture-btn:hover {
+  background-color: #e68900;
+}
+
+/* Champ de rappel */
+.reminder-input {
+    width: 60%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Style des filtres */
+.filter-dropdown, .category-dropdown {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Amélioration des styles */
+.new-note-btn, .delete-btn, .capture-btn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.new-note-btn {
+    background-color: green;
+    color: white;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+}
+
+.capture-btn {
+    background-color: #ff9800;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.capture-btn:hover {
+    background-color: #e68900;
+}
+
+
+/* Champ de rappel */
+.reminder-input {
+  width: 50%;
+  padding:0px;
+  margin-top: 0px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Style des filtres */
+.filter-dropdown, .category-dropdown {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+/* Amélioration des styles */
+.new-note-btn, .delete-btn, .capture-btn {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 9px;
+  margin-top: 10px;
+}
+
+.new-note-btn {
+  background-color: green;
+  color: white;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+}
+
+.capture-btn {
+  background-color: #ff9800;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+.capture-btn:hover {
+  background-color: #e68900;
+}
+
+/* Priorité */
+.priority-dropdown {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background: #f8f9fa;
+}
+
+.notebook {
+  border: 2px solid transparent; /* La couleur sera appliquée dynamiquement */
+  border-radius: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.notebook[data-priority="Haute"] {
+  border-color: #ff6b6b; /* Rouge pour Haute */
+}
+
+.notebook[data-priority="Moyenne"] {
+  border-color: #ffd93d; /* Jaune pour Moyenne */
+}
+
+.notebook[data-priority="Basse"] {
+  border-color: #6bcf6b; /* Vert pour Basse */
+}
+
+
+/* Boutons de partage */
+.share-btn, .link-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.share-btn:hover {
+  background-color: #0056b3;
+}
+
+.link-btn {
+  background-color: #4CAF50;
+}
+
+.link-btn:hover {
+  background-color: #388E3C;
+}
+
+
+/* Boutons de partage */
+.share-btn, .link-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 7px;
+  margin-top: 10px;
+}
+
+.share-btn:hover {
+  background-color: #0056b3;
+}
+
+.link-btn {
+  background-color: #af4c9b;
+}
+
+.link-btn:hover {
+  background-color: #7d388e;
+}
+
+/* Couleurs pour les priorités */
+.notebook[data-priority="Haute"] {
+  border-color: #ff6b6b; /* Rouge */
+}
+
+.notebook[data-priority="Moyenne"] {
+  border-color: #ffd93d; /* Jaune */
+}
+
+.notebook[data-priority="Basse"] {
+  border-color: #6bcf6b; /* Vert */
+}
+
+
+/* Mode clair */
+.app-container.light {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --note-background: #f9f9f9;
+  --note-border: #ddd;
+  --button-background: #007bff;
+  --button-color: #ffffff;
+}
+
+/* Mode sombre */
+.app-container.dark {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --note-background: #1e1e1e;
+  --note-border: #333;
+  --button-background: #4caf50;
+  --button-color: #ffffff;
+}
+
+/* Mode bleu */
+.app-container.blue {
+  --background-color: #e3f2fd;
+  --text-color: #0d47a1;
+  --note-background: #bbdefb;
+  --note-border: #90caf9;
+  --button-background: #2196f3;
+  --button-color: #ffffff;
+}
+
+/* Mode rose */
+.app-container.pink {
+  --background-color: #fce4ec;
+  --text-color: #880e4f;
+  --note-background: #f8bbd0;
+  --note-border: #f48fb1;
+  --button-background: #ec407a;
+  --button-color: #ffffff;
+}
+
+/* Variables globales pour utiliser les couleurs */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.notebook {
+  background-color: var(--note-background);
+  border: 1px solid var(--note-border);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+button {
+  background-color: var(--button-background);
+  color: var(--button-color);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Mode vert */
+.app-container.green {
+  --background-color: #e8f5e9;
+  --text-color: #1b5e20;
+  --note-background: #c8e6c9;
+  --note-border: #a5d6a7;
+  --button-background: #4caf50;
+  --button-color: #ffffff;
+}
+
+/* Mode violet */
+.app-container.purple {
+  --background-color: #f3e5f5;
+  --text-color: #4a148c;
+  --note-background: #e1bee7;
+  --note-border: #ce93d8;
+  --button-background: #9c27b0;
+  --button-color: #ffffff;
+}
+
+/* Mode orange */
+.app-container.orange {
+  --background-color: #fff3e0;
+  --text-color: #e65100;
+  --note-background: #ffe0b2;
+  --note-border: #ffcc80;
+  --button-background: #ff9800;
+  --button-color: #ffffff;
+}
+
+/* Mode jaune */
+.app-container.yellow {
+  --background-color: #fffde7;
+  --text-color: #f57f17;
+  --note-background: #fff9c4;
+  --note-border: #fff59d;
+  --button-background: #ffeb3b;
+  --button-color: #000000;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.notebook {
+  background-color: var(--note-background);
+  border: 1px solid var(--note-border);
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+button {
+  background-color: var(--button-background);
+  color: var(--button-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.95);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+.note {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.theme-random-btn {
+  background-color: var(--button-background);
+  color: var(--button-color);
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.theme-random-btn:hover {
+  transform: rotate(10deg) scale(1.1);
+  background-color: #ffd600;
+}
+
+.export-pdf-btn {
+  background-color: #d32f2f; /* Couleur rouge */
+  color: white;
+  padding: 8px 10px; /* Même padding que les autres boutons */
+  border-radius: 5px; /* Arrondi standard */
+  border: none;
+  cursor: pointer;
+  font-size: 14px; /* Taille de police cohérente */
+  margin-top: 10px; /* Espacement similaire */
+  transition: background-color 0.3s ease; /* Transition fluide */
+}
+
+.export-pdf-btn:hover {
+  background-color: #b71c1c; /* Couleur rouge foncé au survol */
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 20px 0;
+}
+
+.chart {
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.chart:hover {
+  transform: scale(1.02);
+}
+
+.chart h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbot-header {
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  max-width: 80%;
+}
+
+.message.user {
+  background-color: #007bff;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.message.bot {
+  background-color: #f1f1f1;
+  color: #000;
+  align-self: flex-start;
+}
+
+.chatbot-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.chatbot-input button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chatbot-input button:hover {
+  background-color: #0056b3;
+}
